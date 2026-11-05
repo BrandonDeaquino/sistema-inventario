@@ -85,17 +85,7 @@ class ProductoInfo
 {
     public string Codigo { get; set; }
     public string Nombre { get; set; }
-    public double Precio { get; set; }
-    public int Existencia { get; set; }
 
-    public ProductoInfo(string codigo, string nombre,
-                        double precio, int existencia)
-    {
-        Codigo = codigo;
-        Nombre = nombre;
-        Precio = precio;
-        Existencia = existencia;
-    }
 
     public void MostrarInformacion()
     {
