@@ -99,7 +99,7 @@ class ProductoInfo
 
     public void MostrarInformacion()
     {
-        Console.WriteLine("\n===== INFORMACION DEL SErvivio =====");
+        Console.WriteLine("\n===== busqeda DEL SErvivio =====");
         Console.WriteLine("Codigo: " + Codigo);
         Console.WriteLine("Nombre: " + Nombre);
         Console.WriteLine("Precio: $" + Precio);
