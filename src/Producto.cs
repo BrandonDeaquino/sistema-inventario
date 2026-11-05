@@ -94,16 +94,7 @@ class ProductoInfo
         Codigo = codigo;
         Nombre = nombre;
         Precio = precio;
-        Existencia = existencia;
     }
 
-    public void MostrarInformacion()
-    {
-        Console.WriteLine("\n===== busqeda DEL SErvivio =====");
-        Console.WriteLine("Codigo: " + Codigo);
-        Console.WriteLine("Nombre: " + Nombre);
-        Console.WriteLine("Precio: $" + Precio);
-        Console.WriteLine("Existencia: " + Existencia);
-        Console.WriteLine("====================================");
-    }
+
 }
