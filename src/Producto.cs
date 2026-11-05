@@ -20,10 +20,8 @@ class Producto
         do
         {
             Console.WriteLine("\n===== INVENTARIO DE PRODUCTOS =====");
-            Console.WriteLine("1. Mostrar productos");
             Console.WriteLine("2. Buscar producto");
             Console.WriteLine("3. Salir");
-            Console.Write("Seleccione una opcion: ");
 
             opcion = Convert.ToInt32(Console.ReadLine());
 
