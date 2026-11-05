@@ -32,7 +32,7 @@ class Producto
                 case 1:
                     foreach (ProductoInfo producto in inventario)
                     {
-                        producto.MostrarInformacion();
+                        producto.MostrarInforma
                     }
                     break;
 
