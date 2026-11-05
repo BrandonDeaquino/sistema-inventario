@@ -6,50 +6,7 @@ class Producto
 {
     static void Main(string[] args)
     {
-        // Lista de productos
-        List<ProductoInfo> inventario = new List<ProductoInfo>();
-
-        // Productos de ejemplo
-        inventario.Add(new ProductoInfo("P001", "Teclado", 450, 20));
-        inventario.Add(new ProductoInfo("P002", "Mouse", 250, 15));
-        inventario.Add(new ProductoInfo("P003", "Monitor", 3500, 10));
-        inventario.Add(new ProductoInfo("P004", "Laptop", 12000, 5));
-
-        int opcion;
-
-        do
-        {
-            Console.WriteLine("\n===== INVENTARIO DE PRODUCTOS =====");
-            Console.WriteLine("1. Mostrar productos");
-            Console.WriteLine("2. Buscar producto");
-            Console.WriteLine("3. Salir");
-            Console.Write("Seleccione una opcion: ");
-
-            opcion = Convert.ToInt32(Console.ReadLine());
-
-            switch (opcion)
-            {
-                case 1:
-                    foreach (ProductoInfo producto in inventario)
-                    {
-                        producto.MostrarInformacion();
-                    }
-                    break;
-
-                case 2:
-                    BuscarProducto(inventario);
-                    break;
-
-                case 3:
-                    Console.WriteLine("Saliendo del inventario...");
-                    break;
-
-                default:
-                    Console.WriteLine("Opcion no valida.");
-                    break;
-            }
-
-        } while (opcion != 3);
+        
     }
 
     // Funcion para buscar productos por codigo o nombre
