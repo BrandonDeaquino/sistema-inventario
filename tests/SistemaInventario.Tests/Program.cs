@@ -57,11 +57,9 @@ class Program
 
         Console.WriteLine("==============================================");
 
-        if (!Console.IsInputRedirected)
+        if (pruebasIncorrectas > 0)
         {
-            Console.WriteLine();
-            Console.WriteLine("Presione una tecla para finalizar...");
-            Console.ReadKey();
+            Environment.ExitCode = 1;
         }
     }
 
