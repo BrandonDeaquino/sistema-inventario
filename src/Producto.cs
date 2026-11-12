@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 
@@ -9,36 +8,39 @@ class Producto
         // Lista de productos
         List<ProductoInfo> inventario = new List<ProductoInfo>();
 
-        // Productos de ejemplo
-        inventario.Add(new ProductoInfo("P001", "Teclado", 450, 20));
-        inventario.Add(new ProductoInfo("P002", "Mouse", 250, 15));
-        inventario.Add(new ProductoInfo("P003", "Monitor", 3500, 10));
-        inventario.Add(new ProductoInfo("P004", "Laptop", 12000, 5));
-
         int opcion;
 
         do
         {
             Console.WriteLine("\n===== INVENTARIO DE PRODUCTOS =====");
-            Console.WriteLine("2. Buscar producto");
-            Console.WriteLine("3. Salir");
+            Console.WriteLine("1. Registrar producto");
+            Console.WriteLine("2. Mostrar productos");
+            Console.WriteLine("3. Buscar producto");
+            Console.WriteLine("4. Salir");
+            Console.Write("Seleccione una opcion: ");
 
-            opcion = Convert.ToInt32(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out opcion))
+            {
+                Console.WriteLine("Ingrese una opcion valida.");
+                opcion = 0;
+                continue;
+            }
 
             switch (opcion)
             {
                 case 1:
-                    foreach (ProductoInfo producto in inventario)
-                    {
-                        producto.MostrarInforma
-                    }
+                    RegistrarProducto(inventario);
                     break;
 
                 case 2:
-                    BuscarProducto(inventario);
+                    MostrarProductos(inventario);
                     break;
 
                 case 3:
+                    BuscarProducto(inventario);
+                    break;
+
+                case 4:
                     Console.WriteLine("Saliendo del inventario...");
                     break;
 
@@ -47,10 +49,76 @@ class Producto
                     break;
             }
 
-        } while (opcion != 3);
+        } while (opcion != 4);
     }
 
-    // Funcion para buscar productos por codigo o nombre
+    // Registrar un producto
+    static void RegistrarProducto(List<ProductoInfo> inventario)
+    {
+        Console.WriteLine("\n===== REGISTRAR PRODUCTO =====");
+
+        Console.Write("Ingrese el codigo: ");
+        string codigo = Console.ReadLine();
+
+        // Evitar codigos duplicados
+        foreach (ProductoInfo producto in inventario)
+        {
+            if (producto.Codigo.Equals(codigo,
+                StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("El codigo ya existe.");
+                return;
+            }
+        }
+
+        Console.Write("Ingrese el nombre: ");
+        string nombre = Console.ReadLine();
+
+        Console.Write("Ingrese el precio: ");
+
+        if (!double.TryParse(Console.ReadLine(), out double precio)
+            || precio < 0)
+        {
+            Console.WriteLine("Precio no valido.");
+            return;
+        }
+
+        Console.Write("Ingrese la existencia: ");
+
+        if (!int.TryParse(Console.ReadLine(), out int existencia)
+            || existencia < 0)
+        {
+            Console.WriteLine("Existencia no valida.");
+            return;
+        }
+
+        ProductoInfo nuevoProducto =
+            new ProductoInfo(codigo, nombre, precio, existencia);
+
+        inventario.Add(nuevoProducto);
+
+        Console.WriteLine("\nProducto registrado correctamente.");
+        nuevoProducto.MostrarInformacion();
+    }
+
+    // Mostrar todos los productos
+    static void MostrarProductos(List<ProductoInfo> inventario)
+    {
+        Console.WriteLine("\n===== LISTA DE PRODUCTOS =====");
+
+        if (inventario.Count == 0)
+        {
+            Console.WriteLine("No hay productos registrados.");
+            return;
+        }
+
+        foreach (ProductoInfo producto in inventario)
+        {
+            producto.MostrarInformacion();
+        }
+    }
+
+    // Buscar productos por codigo o nombre
     static void BuscarProducto(List<ProductoInfo> inventario)
     {
         Console.Write("\nIngrese el codigo o nombre del producto: ");
@@ -92,7 +160,17 @@ class ProductoInfo
         Codigo = codigo;
         Nombre = nombre;
         Precio = precio;
+        Existencia = existencia;
     }
 
-
+    // Mostrar toda la informacion del producto
+    public void MostrarInformacion()
+    {
+        Console.WriteLine("------------------------------");
+        Console.WriteLine("Codigo: " + Codigo);
+        Console.WriteLine("Nombre: " + Nombre);
+        Console.WriteLine("Precio: $" + Precio.ToString("F2"));
+        Console.WriteLine("Existencia: " + Existencia);
+        Console.WriteLine("------------------------------");
+    }
 }
