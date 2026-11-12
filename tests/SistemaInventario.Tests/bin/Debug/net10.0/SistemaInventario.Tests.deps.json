@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "SistemaInventario.Tests/1.0.0": {
+        "dependencies": {
+          "InventarioProductos": "1.0.0"
+        },
+        "runtime": {
+          "SistemaInventario.Tests.dll": {}
+        }
+      },
+      "InventarioProductos/1.0.0": {
+        "runtime": {
+          "InventarioProductos.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SistemaInventario.Tests/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "InventarioProductos/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
