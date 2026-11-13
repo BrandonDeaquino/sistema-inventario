@@ -174,11 +174,5 @@ public class ProductoInfo
         Console.WriteLine("------------------------------");
     }
 
-    public class ErrorIntencional
-{
-    public void ProvocarError()
-    {
-        int numero = ;
-    }
-}
+
 }
