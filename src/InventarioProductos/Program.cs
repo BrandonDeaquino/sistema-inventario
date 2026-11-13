@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 class Producto
@@ -173,4 +173,12 @@ public class ProductoInfo
         Console.WriteLine("Existencia: " + Existencia);
         Console.WriteLine("------------------------------");
     }
+
+    public class ErrorIntencional
+{
+    public void ProvocarError()
+    {
+        int numero = ;
+    }
+}
 }
