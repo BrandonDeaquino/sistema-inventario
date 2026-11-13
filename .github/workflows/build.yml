@@ -1,0 +1,32 @@
+name: Automatizacion de pruebas - Inventario
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ejecutar-pruebas:
+    name: Ejecutar pruebas CP01-CP07
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar codigo del repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restaurar dependencias
+        run: dotnet restore tests/SistemaInventario.Tests/SistemaInventario.Tests.csproj
+
+      - name: Compilar proyecto
+        run: dotnet build tests/SistemaInventario.Tests/SistemaInventario.Tests.csproj --configuration Release --no-restore
+
+      - name: Ejecutar pruebas automatizadas
+        run: dotnet run --project tests/SistemaInventario.Tests/SistemaInventario.Tests.csproj --configuration Release --no-build
