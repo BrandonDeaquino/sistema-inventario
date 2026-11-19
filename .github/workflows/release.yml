@@ -23,13 +23,17 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restaurar dependencias
-        run: dotnet restore
+        run: |
+          dotnet restore src/InventarioProductos/InventarioProductos.csproj
+          dotnet restore tests/SistemaInventario.Tests/SistemaInventario.Tests.csproj
 
       - name: Compilar proyecto
-        run: dotnet build --configuration Release --no-restore
+        run: |
+          dotnet build src/InventarioProductos/InventarioProductos.csproj --configuration Release --no-restore
+          dotnet build tests/SistemaInventario.Tests/SistemaInventario.Tests.csproj --configuration Release --no-restore
 
       - name: Ejecutar pruebas automatizadas
-        run: dotnet run --project tests/SistemaInventario.Tests/SistemaInventario.Tests.csproj --configuration Release
+        run: dotnet run --project tests/SistemaInventario.Tests/SistemaInventario.Tests.csproj --configuration Release --no-build
 
       - name: Publicar aplicacion
         run: |
