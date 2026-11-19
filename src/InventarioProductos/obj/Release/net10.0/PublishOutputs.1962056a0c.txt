@@ -1,0 +1,4 @@
+C:\Users\Brandon Deaquino\Documents\sistema-inventario\publish\InventarioProductos.dll
+C:\Users\Brandon Deaquino\Documents\sistema-inventario\publish\InventarioProductos.deps.json
+C:\Users\Brandon Deaquino\Documents\sistema-inventario\publish\InventarioProductos.runtimeconfig.json
+C:\Users\Brandon Deaquino\Documents\sistema-inventario\publish\InventarioProductos.pdb
