@@ -159,7 +159,7 @@ public class ProductoInfo
     {
         Codigo = codigo;
         Nombre = nombre;
-        Precio = 0; // Error intencional para validar detencion del workflow
+        Precio = precio;
         Existencia = existencia;
     }
 
