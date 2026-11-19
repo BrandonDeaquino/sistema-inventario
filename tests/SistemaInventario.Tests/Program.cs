@@ -63,6 +63,11 @@ class Program
             Console.WriteLine("Presione una tecla para finalizar...");
             Console.ReadKey();
         }
+
+        if (pruebasIncorrectas > 0)
+        {
+            Environment.ExitCode = 1;
+        }
     }
 
     // Método encargado de ejecutar y registrar cada prueba
