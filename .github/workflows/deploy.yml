@@ -1,0 +1,43 @@
+name: Despliegue del Sistema de Inventario
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Etiqueta de la versión a desplegar (ej. v1.0.2)'
+        required: true
+        default: 'v1.0.2'
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Preparar entorno .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Descargar artefacto liberado
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: ${{ github.repository }}
+          tag: ${{ inputs.version || 'v1.0.2' }}
+          fileName: sistema-inventario-${{ inputs.version || 'v1.0.2' }}.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Preparar directorio de despliegue
+        run: |
+          mkdir -p despliegue
+          unzip -o sistema-inventario-${{ inputs.version || 'v1.0.2' }}.zip -d despliegue
+
+      - name: Verificar archivos desplegados
+        run: |
+          ls -la despliegue/publish
+
+      - name: Comprobar ejecucion del sistema
+        run: |
+          printf "4\n" | dotnet despliegue/publish/InventarioProductos.dll
